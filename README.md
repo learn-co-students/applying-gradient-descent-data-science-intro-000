@@ -17,14 +17,24 @@ But really this approach is analogous to what you have seen before. For a single
 
 Luckily for us, we already did the hard work of deriving these formulas.  Now we get to see the fruit of our labor.  The following formulas tell us how to update regression variables of $m$ and $b$ to approach a "best fit" line.   
 
-* $ \frac{\partial J}{\partial m}J(m,b) = -2\sum_{i = 1}^n x(y_i - (mx_i + b)) = -2\sum_{i = 1}^n x_i*\epsilon_i$ 
-* $ \frac{\partial J}{\partial b}J(m,b) = -2\sum_{i = 1}^n(y_i - (mx_i + b)) = -2\sum_{i = 1}^n \epsilon_i $
+* ```latex
+    $ \frac{\partial J}{\partial m}J(m,b) = -2\sum_{i = 1}^n x(y_i - (mx_i + b)) = -2\sum_{i = 1}^n x_i*\epsilon_i$
+  ```
+* ```latex
+    $ \frac{\partial J}{\partial b}J(m,b) = -2\sum_{i = 1}^n(y_i - (mx_i + b)) = -2\sum_{i = 1}^n \epsilon_i $
+  ```
 
 Given the formulas above, we can work with any dataset of $x$ and $y$ values to determine the best fit line. We simply iterate through our dataset and use the formulas above to determine an update to $m$ and $b$ that will bring us closer to the minimum. So ultimately, to descend along the cost function, we will use the calculations:
 
-`current_m` = `old_m` $ -  (-2*\sum_{i=1}^n x_i*\epsilon_i )$
+`current_m` = `old_m`
+```latex
+$ -  (-2*\sum_{i=1}^n x_i*\epsilon_i )$
+```
 
-`current_b` =  `old_b` $ - ( -2*\sum_{i=1}^n \epsilon_i )$
+`current_b` =  `old_b`
+```latex
+$ - ( -2*\sum_{i=1}^n \epsilon_i )$
+```
 
 Ok, let's turn this into code.  First, let's initialize some data.
 
